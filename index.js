@@ -1,6 +1,6 @@
 'use strict';
 
-const Hapi = require('hapi);
+const Hapi = require('hapi');
 
 const server = Hapi.server(
 {
@@ -21,9 +21,15 @@ server.route(
 const init = async () =>
 {
   await server.register(require('inert'));
-
-
-
+  server.route(
+  {
+   method: 'GET',
+   path: '/{name}',
+   handler: (request, h) =>
+   {
+     return h.file('./public/{request.params.name}');
+   }
+  });
   await server.start();
   console.log('Server running at: ${server.info.uri}');
 };
