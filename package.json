@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/devincheca/CRUDwithHapiNMongo#readme",
   "dependencies": {
-    "hapi": "^17.5.2"
+    "hapi": "^17.5.2",
+    "inert": "^5.1.0"
   }
 }

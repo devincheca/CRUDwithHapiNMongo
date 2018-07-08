@@ -14,6 +14,25 @@ server.route(
   path: '/{name}',
   handler: (request, h) =>
   {
-    
+    return h.file('./public/{request.params.name}');
   }
 });
+
+const init = async () =>
+{
+  await server.register(require('inert'));
+
+
+
+  await server.start();
+  console.log('Server running at: ${server.info.uri}');
+};
+
+process.on('unhandledRejection', (err) =>
+{
+  console.log(err);
+  process.exit(1);
+});
+
+init();
+
