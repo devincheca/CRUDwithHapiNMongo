@@ -8,16 +8,6 @@ const server = Hapi.server(
   port: 8000
 });
 
-server.route(
-{
-  method: 'GET',
-  path: '/{name}',
-  handler: (request, h) =>
-  {
-    return h.file('./public/{request.params.name}');
-  }
-});
-
 const init = async () =>
 {
   await server.register(require('inert'));
@@ -31,7 +21,7 @@ const init = async () =>
    }
   });
   await server.start();
-  console.log('Server running at: ${server.info.uri}');
+  console.log('Server running at: ' + server.info.uri);
 };
 
 process.on('unhandledRejection', (err) =>
